@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule | ShippingBaseball.com</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 80px;
+            /* offset for nav */
+            background-image: linear-gradient(rgba(0, 34, 68, 0.85), rgba(0, 34, 68, 0.95)), url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .schedule-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 1.5rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .schedule-table th {
+            background-color: #f8fafc;
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .schedule-table tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        .matchup {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 600;
+        }
+
+        .vs {
+            color: #999;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .date-col {
+            font-weight: 700;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .port-col {
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tv-col {
+            text-align: right;
+            color: #666;
+        }
+
+        .ticket-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .ticket-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .month-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+        }
+
+        @media (max-width: 768px) {
+            .schedule-table thead {
+                display: none;
+            }
+
+            .schedule-table tr {
+                display: block;
+                padding: 1rem;
+                border-bottom: 2px solid var(--border);
+            }
+
+            .schedule-table td {
+                display: block;
+                padding: 0.5rem 0;
+                border: none;
+            }
+
+            .matchup {
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .tv-col {
+                text-align: left;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="assets/images/logo.png" alt="ShippingBaseball Logo" class="logo-img">
+                <div class="logo-text">Shipping<span>Baseball</span></div>
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="schedule.html" class="active">Schedule</a></li>
+                <li><a href="scores.html">Scores</a></li>
+                <li><a href="auction.html">Auction</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">2026 Season Schedule</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9;">All match-ups, dates, and ports of call.</p>
+    </div>
+
+    <main style="margin-top: 0;">
+        <section class="section">
+            <div class="container">
+                <div class="schedule-container">
+                    <div class="month-header">SEPTEMBER 2026</div>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time (UTC)</th>
+                                <th>Matchup</th>
+                                <th>Venue / Port</th>
+                                <th style="text-align: right;">Tickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="date-col">Sep 01, 14:00</td>
+                                <td>
+                                    <div class="matchup">
+                                        <span>Rotterdam Anchors</span>
+                                        <span class="vs">vs</span>
+                                        <span>Hamburg Dockers</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="port-col"><i class="fas fa-anchor"></i> Rotterdam Port Stadium</div>
+                                </td>
+                                <td class="tv-col"><button class="ticket-btn">Buy Tickets</button></td>
+                            </tr>
+                            <tr>
+                                <td class="date-col">Sep 05, 10:00</td>
+                                <td>
+                                    <div class="matchup">
+                                        <span>Shanghai Dragons</span>
+                                        <span class="vs">vs</span>
+                                        <span>Singapore Slingers</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="port-col"><i class="fas fa-anchor"></i> Pearl Orient Park</div>
+                                </td>
+                                <td class="tv-col"><button class="ticket-btn">Buy Tickets</button></td>
+                            </tr>
+                            <tr>
+                                <td class="date-col">Sep 12, 22:00</td>
+                                <td>
+                                    <div class="matchup">
+                                        <span>LA Mariners</span>
+                                        <span class="vs">vs</span>
+                                        <span>NY Navigators</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="port-col"><i class="fas fa-anchor"></i> Pacific Dock Arena, LA</div>
+                                </td>
+                                <td class="tv-col"><button class="ticket-btn">SOLD OUT</button></td>
+                            </tr>
+                            <tr>
+                                <td class="date-col">Sep 18, 16:00</td>
+                                <td>
+                                    <div class="matchup">
+                                        <span>Dubai Dhows</span>
+                                        <span class="vs">vs</span>
+                                        <span>Mumbai Monsoons</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="port-col"><i class="fas fa-anchor"></i> Gulf Horizon Field</div>
+                                </td>
+                                <td class="tv-col"><button class="ticket-btn">Buy Tickets</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="month-header" style="margin-top: 2rem;">OCTOBER 2026</div>
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time (UTC)</th>
+                                <th>Matchup</th>
+                                <th>Venue / Port</th>
+                                <th style="text-align: right;">Tickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="date-col">Oct 02, 09:00</td>
+                                <td>
+                                    <div class="matchup">
+                                        <span>Tokyo Tides</span>
+                                        <span class="vs">vs</span>
+                                        <span>Busan Wave</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="port-col"><i class="fas fa-anchor"></i> Tokyo Bay Diamond</div>
+                                </td>
+                                <td class="tv-col"><button class="ticket-btn">Buy Tickets</button></td>
+                            </tr>
+                            <tr>
+                                <td class="date-col">Oct 08, 15:00</td>
+                                <td>
+                                    <div class="matchup">
+                                        <span>Antwerp Tritons</span>
+                                        <span class="vs">vs</span>
+                                        <span>Valencia Voyagers</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="port-col"><i class="fas fa-anchor"></i> Flanders Ballpark</div>
+                                </td>
+                                <td class="tv-col"><button class="ticket-btn">Buy Tickets</button></td>
+                            </tr>
+                            <tr>
+                                <td class="date-col">Oct 14, 20:00</td>
+                                <td>
+                                    <div class="matchup">
+                                        <span>Santos Stevedores</span>
+                                        <span class="vs">vs</span>
+                                        <span>Cape Town Currents</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="port-col"><i class="fas fa-anchor"></i> Atlântico Stadium</div>
+                                </td>
+                                <td class="tv-col"><button class="ticket-btn">Buy Tickets</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- 
+        ========================================================
+        ADMIN NOTES FOR EASY EDITING:
+        - Social Links: Edit the 'fab fa-*' icon tags below to update social media links.
+        - Quick Links: Update the inner <li><a> tags for new pages.
+        - Address/Contact: Modify the 'League Office' column text directly.
+        ========================================================
+        -->
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>ShippingBaseball.com</h3>
+                <p>The premier semi-pro baseball league connecting the global shipping and logistics community through
+                    the love of the game.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 1.2rem;">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="teams.html">Teams Directory</a></li>
+                    <li><a href="schedule.html">Season Schedule</a></li>
+                    <li><a href="scores.html">Latest Scores</a></li>
+                    <li><a href="auction.html">Franchise Auction</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>League Office</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent);"></i> 1
+                        Maritime Plaza, Port City</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent);"></i>
+                        contact@shippingbaseball.com</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent);"></i> +1 (555) 019-PORT
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShippingBaseball.com. All rights reserved. "World Peace Through Baseball"</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

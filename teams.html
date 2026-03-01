@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams | ShippingBaseball.com</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 80px;
+            /* offset for nav */
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .team-banner {
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            position: relative;
+        }
+
+        .team-logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border: 4px solid white;
+        }
+
+        .team-info {
+            padding: 3.5rem 1.5rem 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-port {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-item {
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .stat-item strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="assets/images/logo.png" alt="ShippingBaseball Logo" class="logo-img">
+                <div class="logo-text">Shipping<span>Baseball</span></div>
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teams.html" class="active">Teams</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="scores.html">Scores</a></li>
+                <li><a href="auction.html">Auction</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">League Franchises</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9;">15 Elite Teams spanning the globe's busiest ports.</p>
+    </div>
+
+    <main style="margin-top: 0; min-height: auto;">
+        <section class="section section-alt">
+            <div class="container">
+                <div class="teams-grid">
+                    <!-- Team 1 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">RA</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Rotterdam Anchors</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Rotterdam, NL</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>2</strong></div>
+                                <div class="stat-item">Founded<strong>2018</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 2 -->
+                    <div class="team-card">
+                        <div class="team-banner" style="background: linear-gradient(135deg, #d31145, #a30d35);">
+                            <div class="team-logo-placeholder" style="color: var(--primary);">SD</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Shanghai Dragons</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Shanghai, CN</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>4</strong></div>
+                                <div class="stat-item">Founded<strong>2015</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 3 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">HD</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Hamburg Dockers</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Hamburg, DE</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>1</strong></div>
+                                <div class="stat-item">Founded<strong>2016</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 4 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">SS</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Singapore Slingers</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Singapore, SG</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>3</strong></div>
+                                <div class="stat-item">Founded<strong>2015</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 5 -->
+                    <div class="team-card">
+                        <div class="team-banner" style="background: linear-gradient(135deg, #333, #000);">
+                            <div class="team-logo-placeholder" style="color: #333;">LA</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">LA Mariners</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Los Angeles, US</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>2020</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 6 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">AT</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Antwerp Tritons</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Antwerp, BE</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>2021</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 7 -->
+                    <div class="team-card">
+                        <div class="team-banner" style="background: linear-gradient(135deg, #c5a059, #8c7340);">
+                            <div class="team-logo-placeholder" style="color: #c5a059;">DD</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Dubai Dhows</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Jebel Ali Port, AE</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>1</strong></div>
+                                <div class="stat-item">Founded<strong>2019</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 8 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">BW</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Busan Wave</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Busan, KR</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>2</strong></div>
+                                <div class="stat-item">Founded<strong>2016</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 9 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">NY</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">NY Navigators</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of NY & NJ, US</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>2022</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 10 -->
+                    <div class="team-card">
+                        <div class="team-banner" style="background: linear-gradient(135deg, #d31145, #a30d35);">
+                            <div class="team-logo-placeholder" style="color: var(--accent);">TT</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Tokyo Tides</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Tokyo, JP</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>1</strong></div>
+                                <div class="stat-item">Founded<strong>2017</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 11 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">VV</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Valencia Voyagers</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Valencia, ES</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>2023</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 12 -->
+                    <div class="team-card">
+                        <div class="team-banner" style="background: linear-gradient(135deg, #009c3b, #005c23);">
+                            <div class="team-logo-placeholder" style="color: #009c3b;">SS</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Santos Stevedores</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Santos, BR</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>2024</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 13 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">MM</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Mumbai Monsoons</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Mumbai, IN</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>2025</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 14 -->
+                    <div class="team-card">
+                        <div class="team-banner" style="background: linear-gradient(135deg, #0085ca, #004d7a);">
+                            <div class="team-logo-placeholder" style="color: #0085ca;">SC</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Sydney Clippers</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port Jackson, AU</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>2026</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team 15 -->
+                    <div class="team-card">
+                        <div class="team-banner">
+                            <div class="team-logo-placeholder">CC</div>
+                        </div>
+                        <div class="team-info">
+                            <h3 class="team-name">Cape Town Currents</h3>
+                            <div class="team-port"><i class="fas fa-map-marker-alt"></i> Port of Cape Town, ZA</div>
+                            <div class="team-stats">
+                                <div class="stat-item">Titles<strong>0</strong></div>
+                                <div class="stat-item">Founded<strong>NEW</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- 
+        ========================================================
+        ADMIN NOTES FOR EASY EDITING:
+        - Social Links: Edit the 'fab fa-*' icon tags below to update social media links.
+        - Quick Links: Update the inner <li><a> tags for new pages.
+        - Address/Contact: Modify the 'League Office' column text directly.
+        ========================================================
+        -->
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>ShippingBaseball.com</h3>
+                <p>The premier semi-pro baseball league connecting the global shipping and logistics community through
+                    the love of the game.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 1.2rem;">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="teams.html">Teams Directory</a></li>
+                    <li><a href="schedule.html">Season Schedule</a></li>
+                    <li><a href="scores.html">Latest Scores</a></li>
+                    <li><a href="auction.html">Franchise Auction</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>League Office</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent);"></i> 1
+                        Maritime Plaza, Port City</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent);"></i>
+                        contact@shippingbaseball.com</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent);"></i> +1 (555) 019-PORT
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShippingBaseball.com. All rights reserved. "World Peace Through Baseball"</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

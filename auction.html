@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franchise Auction | ShippingBaseball.com</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .auction-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #001122 100%);
+            color: white;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            margin-top: 80px;
+            /* offset for nav */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auction-hero::before {
+            content: '\f0e3';
+            /* Gavel icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(255, 255, 255, 0.03);
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .page-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .auction-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .info-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-card h3 i {
+            color: var(--accent);
+        }
+
+        .rules-list {
+            list-style: none;
+        }
+
+        .rules-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .rules-list li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .rules-list strong {
+            display: block;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .bid-form {
+            background: var(--bg-alt);
+            padding: 3rem;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 34, 68, 0.1);
+        }
+
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            background: var(--primary);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            margin: -2rem auto 4rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-box {
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-box:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #d0d0d0;
+        }
+
+        @media (max-width: 900px) {
+            .auction-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-banner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stat-box {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-bottom: 2rem;
+            }
+
+            .stat-box:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="assets/images/logo.png" alt="ShippingBaseball Logo" class="logo-img">
+                <div class="logo-text">Shipping<span>Baseball</span></div>
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="scores.html">Scores</a></li>
+                <li><a href="auction.html" class="active">Auction</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="auction-hero">
+        <div class="container" style="position: relative; z-index: 1;">
+            <span class="badge" style="background-color: white; color: var(--primary);">2027 Expansion</span>
+            <h1 class="page-title">Franchise Auction</h1>
+            <p style="font-size: 1.5rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">Own a piece of the world's
+                most unique sports league. Bidding is now open for two new expansion franchises.</p>
+        </div>
+    </div>
+
+    <main style="margin-top: 0; min-height: auto;">
+
+        <div class="container">
+            <div class="stats-banner">
+                <div class="stat-box">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Franchises Available</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">$250M</div>
+                    <div class="stat-label">Minimum Bid</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Nov 1</div>
+                    <div class="stat-label">Bidding Deadline (2026)</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section" style="padding-top: 2rem;">
+            <div class="container">
+                <div class="auction-grid">
+
+                    <!-- Info & Rules -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-gavel"></i> Bidding Rules & Protocol</h3>
+                        <p style="color: #555; margin-bottom: 2rem; font-size: 1.1rem;">
+                            The Shipping World Series is expanding for the 2027 season. Ownership groups must meet the
+                            strictest financial and logistical requirements to enter the league.
+                        </p>
+
+                        <ul class="rules-list">
+                            <li>
+                                <strong>Maritime Connection</strong>
+                                The ownership group must have a demonstrable connection to the global shipping,
+                                maritime, or port logistics industry.
+                            </li>
+                            <li>
+                                <strong>Port Facilities</strong>
+                                The proposed city must possess a deep-water commercial port capable of hosting at least
+                                one Panamax-class vessel during gamedays.
+                            </li>
+                            <li>
+                                <strong>Financial Solvency</strong>
+                                Bidders must place a $10M non-refundable earnest money deposit upon submitting formal
+                                intent to bid.
+                            </li>
+                            <li>
+                                <strong>Labor Agreements</strong>
+                                The club must adhere to the international dockworkers and semipro-athletes collective
+                                bargaining agreement.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Bid Form -->
+                    <div class="bid-form">
+                        <h3 style="font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem;">Register Intent to
+                            Bid</h3>
+                        <p style="color: #666; margin-bottom: 2rem;">Authorized ownership representatives only. Our
+                            legal team will contact you securely.</p>
+
+                        <form action="#" method="POST"
+                            onsubmit="event.preventDefault(); alert('Thank you. The League Office will contact your representatives shortly.');">
+                            <div class="form-group">
+                                <label class="form-label" for="orgName">Ownership Group / Corporation Name</label>
+                                <input type="text" id="orgName" class="form-control" required
+                                    placeholder="e.g., Global Logistics Corp">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="contactName">Primary Representative</label>
+                                <input type="text" id="contactName" class="form-control" required
+                                    placeholder="Full Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">Official Contact Email</label>
+                                <input type="email" id="email" class="form-control" required
+                                    placeholder="executive@company.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="portCity">Proposed Port City</label>
+                                <input type="text" id="portCity" class="form-control" required
+                                    placeholder="e.g., Miami, Yokohama, Naples">
+                            </div>
+
+                            <div class="form-group"
+                                style="margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                                <button type="submit" class="btn btn-primary"
+                                    style="width: 100%; font-size: 1.2rem; padding: 1.2rem;">Submit Formal
+                                    Inquiry</button>
+                                <a href="https://auction.shippingbaseball.com" target="_blank" class="btn btn-outline"
+                                    style="width: 100%; font-size: 1.2rem; padding: 1.2rem; text-align: center; background: white; color: var(--primary); border-color: var(--primary); box-sizing: border-box;">
+                                    <i class="fas fa-external-link-alt"></i> External Bidding Platform
+                                </a>
+                            </div>
+                            <p style="font-size: 0.8rem; color: #888; text-align: center; margin-top: 1rem;">
+                                By submitting this form, you agree to a preliminary background check by SWS League
+                                Officials.
+                            </p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- 
+        ========================================================
+        ADMIN NOTES FOR EASY EDITING:
+        - Social Links: Edit the 'fab fa-*' icon tags below to update social media links.
+        - Quick Links: Update the inner <li><a> tags for new pages.
+        - Address/Contact: Modify the 'League Office' column text directly.
+        ========================================================
+        -->
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>ShippingBaseball.com</h3>
+                <p>The premier semi-pro baseball league connecting the global shipping and logistics community through
+                    the love of the game.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 1.2rem;">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="teams.html">Teams Directory</a></li>
+                    <li><a href="schedule.html">Season Schedule</a></li>
+                    <li><a href="scores.html">Latest Scores</a></li>
+                    <li><a href="auction.html">Franchise Auction</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>League Office</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent);"></i> 1
+                        Maritime Plaza, Port City</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent);"></i>
+                        contact@shippingbaseball.com</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent);"></i> +1 (555) 019-PORT
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShippingBaseball.com. All rights reserved. "World Peace Through Baseball"</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

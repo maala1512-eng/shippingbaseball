@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scores | ShippingBaseball.com</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 80px;
+            /* offset for nav */
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .scores-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .score-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .score-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-header {
+            background-color: #f8fafc;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .status-final {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .status-live {
+            color: #009c3b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-live::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #009c3b;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 156, 59, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 6px rgba(0, 156, 59, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 156, 59, 0);
+            }
+        }
+
+        .score-body {
+            padding: 1.5rem;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .team-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .team-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .team-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .team-score {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+        }
+
+        .team-score.winner {
+            color: var(--primary);
+        }
+
+        .team-score.loser {
+            color: #999;
+        }
+
+        .score-footer {
+            padding: 1rem 1.5rem;
+            background-color: #f8fafc;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .recap-link {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .recap-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .date-divider {
+            grid-column: 1 / -1;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="assets/images/logo.png" alt="ShippingBaseball Logo" class="logo-img">
+                <div class="logo-text">Shipping<span>Baseball</span></div>
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="teams.html">Teams</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="scores.html" class="active">Scores</a></li>
+                <li><a href="auction.html">Auction</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">League Scoreboard</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9;">Latest results from the docks.</p>
+    </div>
+
+    <main style="margin-top: 0; min-height: auto;">
+        <section class="section">
+            <div class="container">
+                <div class="scores-container">
+
+                    <div class="date-divider">Today</div>
+
+                    <!-- Live Game -->
+                    <div class="score-card">
+                        <div class="score-header">
+                            <span class="status-live">Top 7th</span>
+                            <span>Tokyo Bay Diamond</span>
+                        </div>
+                        <div class="score-body">
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo"><i class="fas fa-water"></i></div>
+                                    <span class="team-name">Busan Wave</span>
+                                </div>
+                                <div class="team-score winner">4</div>
+                            </div>
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo" style="color: var(--accent);"><i class="fas fa-tsunami"></i>
+                                    </div>
+                                    <span class="team-name">Tokyo Tides</span>
+                                </div>
+                                <div class="team-score loser">2</div>
+                            </div>
+                        </div>
+                        <div class="score-footer">
+                            <span>W: Kim (2-0) L: Tanaka (1-1)</span>
+                            <a href="#" class="recap-link">Gameday <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Final Game -->
+                    <div class="score-card">
+                        <div class="score-header">
+                            <span class="status-final">Final</span>
+                            <span>Rotterdam Port Stadium</span>
+                        </div>
+                        <div class="score-body">
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo"><i class="fas fa-box-open"></i></div>
+                                    <span class="team-name" style="color: #999;">Hamburg Dockers</span>
+                                </div>
+                                <div class="team-score loser">3</div>
+                            </div>
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo"><i class="fas fa-anchor"></i></div>
+                                    <span class="team-name">Rotterdam Anchors</span>
+                                </div>
+                                <div class="team-score winner">7</div>
+                            </div>
+                        </div>
+                        <div class="score-footer">
+                            <span>W: Van Dijk (4-1) SV: De Jong (10)</span>
+                            <a href="#" class="recap-link">Recap <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="date-divider">Yesterday</div>
+
+                    <!-- Final Game Extra Innings -->
+                    <div class="score-card">
+                        <div class="score-header">
+                            <span class="status-final">Final / 11</span>
+                            <span>Pacific Dock Arena, LA</span>
+                        </div>
+                        <div class="score-body">
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo"><i class="fas fa-compass"></i></div>
+                                    <span class="team-name">NY Navigators</span>
+                                </div>
+                                <div class="team-score winner">6</div>
+                            </div>
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo"><i class="fas fa-ship"></i></div>
+                                    <span class="team-name" style="color: #999;">LA Mariners</span>
+                                </div>
+                                <div class="team-score loser">5</div>
+                            </div>
+                        </div>
+                        <div class="score-footer">
+                            <span>W: Smith (1-0) L: Johnson (0-2)</span>
+                            <a href="#" class="recap-link">Recap <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Final Game Blowout -->
+                    <div class="score-card">
+                        <div class="score-header">
+                            <span class="status-final">Final</span>
+                            <span>Pearl Orient Park</span>
+                        </div>
+                        <div class="score-body">
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo"><i class="fas fa-water"></i></div>
+                                    <span class="team-name" style="color: #999;">Singapore Slingers</span>
+                                </div>
+                                <div class="team-score loser">1</div>
+                            </div>
+                            <div class="team-row">
+                                <div class="team-info">
+                                    <div class="team-logo" style="color: var(--accent);"><i class="fas fa-dragon"></i>
+                                    </div>
+                                    <span class="team-name">Shanghai Dragons</span>
+                                </div>
+                                <div class="team-score winner">12</div>
+                            </div>
+                        </div>
+                        <div class="score-footer">
+                            <span>W: Chen (5-0) HR: Li (8), Wang (12)</span>
+                            <a href="#" class="recap-link">Recap <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- 
+        ========================================================
+        ADMIN NOTES FOR EASY EDITING:
+        - Social Links: Edit the 'fab fa-*' icon tags below to update social media links.
+        - Quick Links: Update the inner <li><a> tags for new pages.
+        - Address/Contact: Modify the 'League Office' column text directly.
+        ========================================================
+        -->
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>ShippingBaseball.com</h3>
+                <p>The premier semi-pro baseball league connecting the global shipping and logistics community through
+                    the love of the game.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 1.2rem;">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="teams.html">Teams Directory</a></li>
+                    <li><a href="schedule.html">Season Schedule</a></li>
+                    <li><a href="scores.html">Latest Scores</a></li>
+                    <li><a href="auction.html">Franchise Auction</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>League Office</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent);"></i> 1
+                        Maritime Plaza, Port City</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent);"></i>
+                        contact@shippingbaseball.com</li>
+                    <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent);"></i> +1 (555) 019-PORT
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ShippingBaseball.com. All rights reserved. "World Peace Through Baseball"</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
