@@ -78,14 +78,13 @@ header {
 }
 
 .logo-img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background-color: white;
+    height: auto;
+    width: 150px;
+    border-radius: 0;
+    background-color: transparent;
     object-fit: contain;
-    padding: 4px;
+    padding: 0;
 }
-
 .logo-text {
     font-size: 1.5rem;
     font-weight: 800;
@@ -460,4 +459,5 @@ footer {
         margin-left: 0;
         margin-top: 1rem;
     }
+
 }
